@@ -40,3 +40,33 @@ document.addEventListener("DOMContentLoaded", function () {
         editButton.style.display = "none";
     });
 });
+
+//Carousel
+
+let slideIndex = 0;
+
+function showSlide() {
+    const slides = document.querySelector(".event-slide");
+    const slideWidth = document.querySelector(".event").offsetWidth + 10; // Adjust for spacing
+    slides.style.transform = `translateX(${-slideIndex * slideWidth * 1.1}px)`;
+}
+
+function nextSlide() {
+    const totalSlides = Math.ceil(document.querySelectorAll(".event").length / 3);
+    if (slideIndex < totalSlides - 1) {
+        slideIndex++;
+    } else {
+        slideIndex = 0;
+    }
+    showSlide();
+}
+
+function prevSlide() {
+    const totalSlides = Math.ceil(document.querySelectorAll(".event").length / 3);
+    if (slideIndex > 0) {
+        slideIndex--;
+    } else {
+        slideIndex = totalSlides - 1;
+    }
+    showSlide();
+}
